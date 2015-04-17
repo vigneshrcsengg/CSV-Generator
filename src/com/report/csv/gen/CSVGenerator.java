@@ -13,18 +13,22 @@ import java.util.List;
  */
 public class CSVGenerator
 {
+
     private final Writer csvWriter;
     private final File csvFile;
     private final FileWriter csvFileWriter;
-    
-    private char[] lineDelim = new char[]{'\n'};
-    
+
+    private char[] lineDelim = new char[]
+    {
+        '\n'
+    };
+
     private CSVHeader _header;
     private List<CSVRow> _listRows;
     private CSVRow _csvRow;
 
     private boolean closed;
-    
+
     /**
      *
      * @param csvFileName
@@ -32,21 +36,21 @@ public class CSVGenerator
      * @param permit
      * @throws java.io.IOException
      */
-    public CSVGenerator(String csvFileName,String filePath,boolean permit) throws IOException
+    public CSVGenerator(String csvFileName, String filePath, boolean permit) throws IOException
     {
         closed = false;
-        
-        if(!new File(filePath).exists())
+
+        if (!new File(filePath).exists())
         {
             new File(filePath).mkdirs();
         }
-        
-        csvFile = new File(filePath+csvFileName);        
+
+        csvFile = new File(filePath + csvFileName);
         csvFileWriter = new FileWriter(csvFile);
-        
+
         setPermit(permit);
-        
-        this.csvWriter = csvFileWriter;        
+
+        this.csvWriter = csvFileWriter;
         _listRows = new LinkedList<CSVRow>();
     }
 
@@ -58,9 +62,9 @@ public class CSVGenerator
      * @param lineDelim
      * @throws java.io.IOException
      */
-    public CSVGenerator(String csvFileName,String filePath,boolean permit, char... lineDelim) throws IOException
+    public CSVGenerator(String csvFileName, String filePath, boolean permit, char... lineDelim) throws IOException
     {
-        this(csvFileName,filePath,permit);
+        this(csvFileName, filePath, permit);
         this.lineDelim = lineDelim;
     }
 
@@ -167,14 +171,14 @@ public class CSVGenerator
     {
         csvWriter.flush();
     }
-    
+
     private void setPermit(boolean permits)
     {
-        if(permits == true)
+        if (permits == true)
         {
             csvFile.setReadOnly();
         }
-        else if(permits == false)
+        else if (permits == false)
         {
             csvFile.setReadable(true);
             csvFile.setWritable(true);

@@ -18,7 +18,7 @@ public class CSVRow implements CSVParserUtil
     private CSVWriter _writer;
     private Object[] _data;
     private boolean[] isSet;
-    
+
     CSVRow(CSVHeader header)
     {
         _data = new Object[header.getColumnCount()];
@@ -37,8 +37,8 @@ public class CSVRow implements CSVParserUtil
         {
             throw new CSVException("index out of range: " + index);
         }
-        
-        _data[index] = value;        
+
+        _data[index] = value;
         isSet[index] = true;
     }
 
@@ -59,11 +59,11 @@ public class CSVRow implements CSVParserUtil
 
                 if (isSet[i])
                 {
-                    if(_data[i] == null)
+                    if (_data[i] == null)
                     {
                         _data[i] = "";
                     }
-                    
+
                     _writer = new CSVWriter(_data[i]);
                     _writer.write(csvWriter);
                 }
@@ -71,9 +71,9 @@ public class CSVRow implements CSVParserUtil
         }
         catch (IOException ex)
         {
-            
+             
         }
-        catch(NullPointerException e)
+        catch (NullPointerException e)
         {
             System.err.println(e.getMessage());
         }

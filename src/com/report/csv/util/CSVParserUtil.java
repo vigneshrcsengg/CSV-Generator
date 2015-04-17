@@ -71,12 +71,40 @@ public interface CSVParserUtil
      */
     public static List<SimpleDateFormat> DATE_FORMATS = new ArrayList<SimpleDateFormat>()
     {
+        private static final long serialVersionUID = 1L;
+
+        
         {
             add(new SimpleDateFormat("dd/MM/yyyy"));
             add(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss a"));
-            
+
             add(new SimpleDateFormat("dd/MM/yy"));
             add(new SimpleDateFormat("dd/MM/yy HH:mm:ss a"));
         }
     };
+
+    /**
+     *
+     */
+    public static final String DAY = "%td";
+
+    /**
+     *
+     */
+    public static final String ABV_MONTH = "%tb";
+
+    /**
+     *
+     */
+    public static final String YEAR = "%tY";
+
+    /**
+     *
+     */
+    public static final String _24HOUR = "%tT";
+
+    /**
+     *
+     */
+    public static final String _12HOUR = "%tr";
 }

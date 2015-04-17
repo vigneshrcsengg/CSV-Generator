@@ -8,42 +8,63 @@ import java.util.List;
 
 /**
  *
- * @author Prasanth R
+ * @author VIGNESH R
  */
 public class CSVTest
 {
+
     /**
      *
      * @param args
      * @throws IOException
      */
-                
     public static void main(String[] args) throws IOException
     {
         String csvFilePath = "C:\\Users\\Prasanth R\\Desktop\\DirectoryCreated\\cell\\";
         String csvFileName = "REPORT_CSV_GENERATOR.csv";
-     
-        CSVGenerator csv = new CSVGenerator(csvFileName,csvFilePath,false);
-        
+
+        CSVGenerator csv = new CSVGenerator(csvFileName, csvFilePath, false);
+
         try
         {
             String usingFlow = "checkDatatype";
 
-            String[] header = {"EMP_ID", "EMP_NAME", "EMP_DOB", "EMP_DESG", "EMP_SALARY"};
-            String[] datatypeHeader = {"STRING_STRICT","STRING", "INTEGER", "CHAR", "BYTE", "SHORT", "LONG", "DOUBLE", "FLOAT", "BOOLEAN","URL","EMAIL","DATE"};
+            String[] header =
+            {
+                "EMP_ID", "EMP_NAME", "EMP_DOB", "EMP_DESG", "EMP_SALARY"
+            };
+            String[] datatypeHeader =
+            {
+                "STRING_STRICT", "STRING", "INTEGER", "CHAR", "BYTE", "SHORT", "LONG", "DOUBLE", "FLOAT", "BOOLEAN", "URL", "EMAIL", "DATE"
+            };
 
-            String[] _1 = {"1", "2", "3", "4", "5", "6"};
-            String[] _2 = {"Franklin", "Bruce", "Jhon", "Wilson", "Mansion", "Kelli"};
-            String[] _3 = {"1992-09-09", "1991-08-23", "", "1989-08-16", "", "1977-09-12"};
-            String[] _4 = {"Software Engineer", "CEO", "Manager", "Admin", "Sweeper", "Senior"};
-            String[] _5 = {"2000", "2000", "2000", "2000", "2000", "3000"};
+            String[] _1 =
+            {
+                "1", "2", "3", "4", "5", "6"
+            };
+            String[] _2 =
+            {
+                "Franklin", "Bruce", "Jhon", "Wilson", "Mansion", "Kelli"
+            };
+            String[] _3 =
+            {
+                "1992-09-09", "1991-08-23", "", "1989-08-16", "", "1977-09-12"
+            };
+            String[] _4 =
+            {
+                "Software Engineer", "CEO", "Manager", "Admin", "Sweeper", "Senior"
+            };
+            String[] _5 =
+            {
+                "2000", "2000", "2000", "2000", "2000", "3000"
+            };
 
             Employe _1emp = new Employe(123, "Raja", "1991-09-16", "Software Developer", 12000);
-            Employe _2emp = new Employe(124, "Mani", "1989-07-18", "Human Resource", 11000);                        
+            Employe _2emp = new Employe(124, "Mani", "1989-07-18", "Human Resource", 11000);
             Employe _3emp = new Employe(125, "Chola", "1992-08-05", "Manager", 20000);
             Employe _4emp = new Employe(126, "Pandi", "1991-09-09", "CEO", 20000);
             Employe _5emp = new Employe(127, "Chakara", "1985-03-14", "Administrator", 1000);
-            Employe _6emp = new Employe(129, "Arokya", "2001-09-09","IT Manager",9000);
+            Employe _6emp = new Employe(129, "Arokya", "2001-09-09", "IT Manager", 9000);
 
             List<Employe> employ = new ArrayList<>();
 
@@ -54,26 +75,61 @@ public class CSVTest
             employ.add(_5emp);
             employ.add(_6emp);
 
-            String[] STRING_STRICT = 
+            String[] STRING_STRICT =
             {
-                "random \" doublequote","comma,separated","Two\n" +"lines"," leading space, and a comma","\"leading quote, comma","_space, comma\n"+"second line, and double quote\""
+                "random \" doublequote", "comma,separated", "Two\n" + "lines", " leading space, and a comma", "\"leading quote, comma", "_space, comma\n" + "second line, and double quote\""
             };
-            String[] STRING = {"String1","String2","String3","String4","String5",null};
-            int[] INT =       {1,12,123,1234,12345,123_456};
-            char[] CHAR =     {'@','#','A','\r','\n','\0'};
-            byte[] BYTE =     {-127,-1,0,1,56,127};
-            short[] SHORT =   {-1233,19,23,9832,-9282,923};
-            long[] LONG =     {123,123_23L,23,939_923_223,12,-12_09};
-            double[] DOUBLE = {12.44d,-273.238d,2378283982932.823672368238d,2837.9,4576723.928263753623232873623d,0};
-            float[] FLOAT =   {9182.4f,2323.232323f,23f,-92723723.792826823f,-2773889222.872672f,28328282.8f};
-            boolean[] BOOL =  {true,false,true,false,true,false};
-            
-            String[] URL =    {"http://www.google.com/","http://www.google.co.in","https://codejava.org","ftp://journaldev.in","http://github.com/","www.freelancer.com"};
-            String[] EMAIL =  {"vignesh.prasanth@gmail.com","vigneshr.csengg","123x344@gmail.com","vig@gmail.com","90j_89@gmail.com","six@gmail.com"};
-            
-            String[] DATE = {"16/09/14","15/04/1991","20/4/89","13/09/89","22/12/2045","28/02/14"};
-            
-            
+            String[] STRING =
+            {
+                "String1", "String2", "String3", "String4", "String5", null
+            };
+            int[] INT =
+            {
+                1, 12, 123, 1234, 12345, 123_456
+            };
+            char[] CHAR =
+            {
+                '@', '#', 'A', '\r', '\n', '\0'
+            };
+            byte[] BYTE =
+            {
+                -127, -1, 0, 1, 56, 127
+            };
+            short[] SHORT =
+            {
+                -1233, 19, 23, 9832, -9282, 923
+            };
+            long[] LONG =
+            {
+                123, 123_23L, 23, 939_923_223, 12, -12_09
+            };
+            double[] DOUBLE =
+            {
+                12.44d, -273.238d, 2378283982932.823672368238d, 2837.9, 4576723.928263753623232873623d, 0
+            };
+            float[] FLOAT =
+            {
+                9182.4f, 2323.232323f, 23f, -92723723.792826823f, -2773889222.872672f, 28328282.8f
+            };
+            boolean[] BOOL =
+            {
+                true, false, true, false, true, false
+            };
+
+            String[] URL =
+            {
+                "http://www.google.com/", "http://www.google.co.in", "https://codejava.org", "ftp://journaldev.in", "http://github.com/", "www.freelancer.com"
+            };
+            String[] EMAIL =
+            {
+                "vignesh.prasanth@gmail.com", "vigneshr.csengg", "123x344@gmail.com", "vig@gmail.com", "90j_89@gmail.com", "six@gmail.com"
+            };
+
+            String[] DATE =
+            {
+                "16/09/2014", "15/04/1991", "20/4/1989", "13/09/1989", "22/12/2045", "28/02/2014"
+            };
+
             switch (usingFlow)
             {
                 case "List":
@@ -104,7 +160,7 @@ public class CSVTest
                     csv.setHeader(datatypeHeader);
                     for (int i = 0; i < STRING.length; i++)
                     {
-                        csv.set(0,STRING_STRICT[i]);
+                        csv.set(0, STRING_STRICT[i]);
                         csv.set(1, STRING[i]);
                         csv.set(2, INT[i]);
                         //csv.set(3, CHAR[i]);

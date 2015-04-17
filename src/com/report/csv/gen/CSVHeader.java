@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 
+ *
  * @author VIGNESH R
  */
 public class CSVHeader implements CSVParserUtil
@@ -18,9 +18,8 @@ public class CSVHeader implements CSVParserUtil
     private HashMap<String, Integer> columnIndexes;
 
     /**
-    * Constructor
-    * Initialize the LinkedList and HashMap.
-    */
+     * Constructor Initialize the LinkedList and HashMap.
+     */
     public CSVHeader()
     {
         columns = new LinkedList<String>();
@@ -29,8 +28,8 @@ public class CSVHeader implements CSVParserUtil
 
     /**
      * Constructor
-     * 
-     * @param columns  
+     * <p>
+     * @param columns
      */
     public CSVHeader(String... columns)
     {
@@ -44,7 +43,7 @@ public class CSVHeader implements CSVParserUtil
 
     /**
      * Column Index
-     * 
+     * <p>
      * @param column
      * @return Current specified column index.
      */
@@ -63,7 +62,7 @@ public class CSVHeader implements CSVParserUtil
 
     /**
      * Column Count
-     * 
+     * <p>
      * @return columns size.
      */
     public int getColumnCount()
@@ -73,9 +72,10 @@ public class CSVHeader implements CSVParserUtil
 
     /**
      * Perform a write function using Writer.
-     * @param writer
+     * <p>
+     * @param header
      */
-    public void toWriter(Writer writer)
+    public void toWriter(Writer header)
     {
         try
         {
@@ -89,12 +89,12 @@ public class CSVHeader implements CSVParserUtil
                 }
                 else
                 {
-                    writer.write(DELIMITER);
+                    header.write(DELIMITER);
                 }
 
-                writer.write(QUOTE);
-                writer.write(column);
-                writer.write(QUOTE);
+                header.write(QUOTE);
+                header.write(column);
+                header.write(QUOTE);
             }
         }
         catch (IOException ex)
