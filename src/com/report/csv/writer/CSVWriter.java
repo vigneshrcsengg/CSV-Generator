@@ -5,21 +5,28 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- *
+ * CSV Writer to write a row values into CSV cell implemented by CSVWriterTool
+ * 
  * @author VIGNESH R
  */
 public class CSVWriter implements CSVWriterTool
 {
 
+    /** Row Values */
     private static Object objValue;
+    /** Object Type */
     private static String objName;
+    /** Object values are format into String*/
     private static String _objValue;
 
+    /** StringValidator class to find and parse the String from <b>String,Date,URL and Email</b> */
     private static StringValidator theString;
 
     /**
-     *
+     * Constructor to get Object type.
+     * 
      * @param obj
+     *      Row Values.
      */
     public CSVWriter(Object obj)
     {
@@ -30,9 +37,14 @@ public class CSVWriter implements CSVWriterTool
     }
 
     /**
-     *
+     * Writer Operation using FileWriter Stream.
+     *      - Using StringValidator Class to Validate the String by it's type.
+     *      - Otherwise String types, format into the String and write into CSVFile.
+     * 
      * @param csvWriter
+     *      FileWriter Stream.
      * @throws IOException
+     *  throws IOException for Write a data into File.
      */
     @Override
     public void write(Writer csvWriter) throws IOException

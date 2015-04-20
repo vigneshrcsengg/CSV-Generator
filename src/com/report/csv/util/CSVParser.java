@@ -3,18 +3,22 @@ package com.report.csv.util;
 import java.util.Date;
 
 /**
- *
+ * CSV Parser to parse the String data type with validate the Special Characters.
+ * 
  * @author VIGNESH R
  */
 public class CSVParser implements CSVParserUtil
 {
-
+    /** StringBuilder to construct the cellData with remove special or unwanted characters */
     private static StringBuilder resultBuilder;
+    /** Contains cellData*/
     private static String cellData;
 
     /**
-     *
+     * Constructor
+     * 
      * @param cellData
+     *     String - Contains the Row of cell value.
      */
     @SuppressWarnings("static-access")
     public CSVParser(String cellData)
@@ -24,8 +28,10 @@ public class CSVParser implements CSVParserUtil
     }
 
     /**
+     * To parse the String with Special Characters.
      *
      * @return
+     *      CSV Formatted Cell Value.
      */
     public static String sanitizeCSV()
     {
@@ -51,10 +57,14 @@ public class CSVParser implements CSVParserUtil
     }
 
     /**
+     * Replace the Special Character or Error with the DOUBLE_QUOTE ("")
      *
      * @param resultBuilder
+     *      The constructed cell value.
      * @param quoteInd
+     *      Index position of error char or special char.
      * @return
+     *      The Cell data.
      */
     public static StringBuilder replace(StringBuilder resultBuilder, int quoteInd)
     {
@@ -64,9 +74,12 @@ public class CSVParser implements CSVParserUtil
     }
 
     /**
+     * Parse the Date into particular Formats.
      *
      * @param DATE
+     *      Date object from StringValidator.
      * @return
+     *      Parsed Date Format.
      */
     public static String parseDate(Date DATE)
     {

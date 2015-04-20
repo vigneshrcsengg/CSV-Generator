@@ -1,7 +1,7 @@
 package com.report.csv.util;
 
+import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,19 +16,17 @@ public class StringValidator implements CSVParserUtil
     private static Pattern pattern;
     private static Matcher matcher;
 
+    /** Cell Value */
     private static String stringData;
 
-    /**
-     *
-     */
+    /** CSVParser*/
     public static CSVParser _parser;
 
-    /**
-     *
-     */
+    /** Date Object*/
     public static Date DATE = null;
 
     /**
+     * Constructor.Validate the String is null or not.
      *
      * @param STRING_VAL
      */
@@ -42,8 +40,9 @@ public class StringValidator implements CSVParserUtil
     }
 
     /**
+     * Pass the String into CSVWriter after String Validation with <b>Email,URL and Date</b>
      *
-     * @return
+     * @return cellData
      */
     public static String writeString()
     {
@@ -66,8 +65,9 @@ public class StringValidator implements CSVParserUtil
     }
 
     /**
+     * Validate the String is Email type using EMAIL_PATTERN
      *
-     * @return
+     * @return true - Email, false - Normal String
      */
     public static boolean isEmail()
     {
@@ -78,8 +78,9 @@ public class StringValidator implements CSVParserUtil
     }
 
     /**
+     * Validate the String is URL Type using URL_PATTERN
      *
-     * @return
+     * @return true - URL, false - Normal String
      */
     public static boolean isURL()
     {
@@ -90,12 +91,13 @@ public class StringValidator implements CSVParserUtil
     }
 
     /**
+     * Validate the String is Date using DATE_FORMATS.If String is date set the value into DATE Object.
      *
-     * @return
+     * @return <b>true</b> - Date, <b>false</b> - Normal String
      */
     public static boolean isDate()
     {
-        for (SimpleDateFormat dFormats : DATE_FORMATS)
+        for (DateFormat dFormats : DATE_FORMATS)
         {
             try
             {

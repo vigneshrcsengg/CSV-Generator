@@ -21,12 +21,12 @@ public class CSVTest
     public static void main(String[] args) throws IOException
     {
         String csvFilePath = "C:\\Users\\Prasanth R\\Desktop\\DirectoryCreated\\cell\\";
-        String csvFileName = "REPORT_CSV_GENERATOR.csv";
+        String csvFileName = "REPORT_CSV_GENERATOR";
 
         CSVGenerator csv = new CSVGenerator(csvFileName, csvFilePath, false);
 
         try
-        {
+        {   
             String usingFlow = "checkDatatype";
 
             String[] header =
@@ -115,7 +115,7 @@ public class CSVTest
             {
                 true, false, true, false, true, false
             };
-
+            
             String[] URL =
             {
                 "http://www.google.com/", "http://www.google.co.in", "https://codejava.org", "ftp://journaldev.in", "http://github.com/", "www.freelancer.com"

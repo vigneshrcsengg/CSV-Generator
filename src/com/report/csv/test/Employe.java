@@ -31,6 +31,7 @@ public class Employe
         this.empSalary = empSalary;
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Get & Set Methods">
     /**
      *
      * @return
@@ -120,5 +121,5 @@ public class Employe
     {
         this.empSalary = empSalary;
     }
-
+    // </editor-fold>
 }

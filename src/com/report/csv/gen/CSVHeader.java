@@ -8,17 +8,20 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Collect the Header Information from CSV Generator Class.Organize the header and write into CSV File.
+ * 
  * @author VIGNESH R
  */
 public class CSVHeader implements CSVParserUtil
 {
 
+    /** Store the Header Index Position*/
     private List<String> columns;
+    /** Store the Header values with key pair*/
     private HashMap<String, Integer> columnIndexes;
 
     /**
-     * Constructor Initialize the LinkedList and HashMap.
+     * Default Constructor Initialize the LinkedList and HashMap using String Object.
      */
     public CSVHeader()
     {
@@ -28,8 +31,11 @@ public class CSVHeader implements CSVParserUtil
 
     /**
      * Constructor
-     * <p>
+     *  - Add the Header index position into LinkedList.
+     *  - Add the Header Vales into Hash Map with keys.
+     * 
      * @param columns
+     *          Header Contents.
      */
     public CSVHeader(String... columns)
     {
@@ -42,9 +48,10 @@ public class CSVHeader implements CSVParserUtil
     }
 
     /**
-     * Column Index
-     * <p>
+     * Get the Column Index position using Header Content.
+     * 
      * @param column
+     *          Header Content.
      * @return Current specified column index.
      */
     public int getColumnIndex(String column)
@@ -61,9 +68,9 @@ public class CSVHeader implements CSVParserUtil
     }
 
     /**
-     * Column Count
-     * <p>
-     * @return columns size.
+     * Count the Header.
+     * 
+     * @return Number of header presents by integer value in columns size.
      */
     public int getColumnCount()
     {
@@ -71,9 +78,10 @@ public class CSVHeader implements CSVParserUtil
     }
 
     /**
-     * Perform a write function using Writer.
-     * <p>
+     * Perform a Write Stream Operation using FileWriter.
+     * 
      * @param header
+     *          Write the header Values into CSV File.
      */
     public void toWriter(Writer header)
     {
