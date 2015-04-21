@@ -15,5 +15,4 @@ The CSV-Generator API java class is used to generate the CSV File. It is designe
     
 #Feature Functionalties
 
-  1. Parsing Date.
-  2. Read a CSV File
+	1. Read a CSV File
