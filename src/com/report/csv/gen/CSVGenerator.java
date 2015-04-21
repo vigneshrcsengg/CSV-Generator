@@ -1,8 +1,11 @@
 package com.report.csv.gen;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,18 +23,19 @@ import java.util.List;
  */
 public class CSVGenerator implements CSVTool
 {
+
+    /**
+     * File Handler
+     */
+    private static File csvFile;
+    /**
+     * FileOutputStream
+     */
+    private static FileOutputStream fout;
     /**
      * IO Writer Stream
      */
     private final Writer csvWriter;
-    /**
-     * File Handler
-     */
-    private final File csvFile;
-    /**
-     * FileWriter
-     */
-    private final FileWriter csvFileWriter;
     /**
      * Line Separator or Line Delimeter '\n'
      */
@@ -45,7 +49,8 @@ public class CSVGenerator implements CSVTool
      */
     private CSVHeader _header;
     /**
-     * List CSVRow used to collect and rows and index position of current row information
+     * List CSVRow used to collect and rows and index position of current row
+     * information
      */
     private List<CSVRow> _listRows;
     /**
@@ -58,40 +63,37 @@ public class CSVGenerator implements CSVTool
     private boolean closed;
 
     /**
-     * Constructor with Default Parameters. <p> 1.Construct the file path and file
-     * name for CSV. <p> 2.Generate the Directory path if not exist. <p> 3.Assign the
-     * FileWriter Stream in to Writer. <p> 4.Assign the File Permission.
+     * Constructor with Default Parameters.
+     * <p>
+     * 1.Construct the file path and file name for CSV.
+     * <p>
+     * 2.Generate the Directory path if not exist.
+     * <p>
+     * 3.Assign the FileWriter Stream in to Writer.
+     * <p>
+     * 4.Assign the File Permission.
      * <p>
      * @param csvFileName Name of the CSV File.
-     * @param filePath Path of the given CSV File.
+     * @param filePath    Path of the given CSV File.
      * <p>
      * Example: <b>C:\\CSVFiles\\Generated\\...</b>. If the path not exist it
      * will automatically created.
-     * @param permit To set the File permissions.<p>
+     * @param permit      To set the File permissions.<p>
      * If <b>true</b>, Strict the file <b>READONLY</b> file permission. So,
      * cannot overwrite or edit the file informations and contents.<p>
      * If <b>false</b>, Strict the file <b>READ and WRITE</b> permission.
      * @throws java.io.IOException throws IOException
+     * @throws java.io.UnsupportedEncodingException
+     * @throws com.report.csv.gen.CSVException
      */
-    public CSVGenerator(String csvFileName, String filePath, boolean permit) throws IOException
+    public CSVGenerator(String csvFileName, String filePath, boolean permit) throws IOException, UnsupportedEncodingException, CSVException
     {
         closed = false;
 
-        fileHandler(filePath);
-
-        if (!csvFileName.endsWith(csvExt))
-        {
-            csvFile = new File(filePath + csvFileName + csvExt);
-        }
-        else
-        {
-            csvFile = new File(filePath + csvFileName);
-        }
-        csvFileWriter = new FileWriter(csvFile);
+        this.csvWriter = fileHandler(filePath, csvFileName);
 
         setPermit(permit);
 
-        this.csvWriter = csvFileWriter;
         _listRows = new LinkedList<CSVRow>();
     }
 
@@ -102,23 +104,61 @@ public class CSVGenerator implements CSVTool
      * Permission. 5.Assign the delimiter for line separator.
      * <p>
      * @param csvFileName Name of the CSV File.
-     * @param filePath Path of the given CSV File.
+     * @param filePath    Path of the given CSV File.
      * <p>
      * Example: <b>C:\\CSVFiles\\Generated\\...</b>. If the path not exist it
      * will automatically created.
      * <p>
-     * @param permit To set the File permissions.<p>
+     * @param permit      To set the File permissions.<p>
      * If <b>true</b>, Strict the file <b>READONLY</b> file permission. So,
      * cannot overwrite or edit the file informations and contents.<p>
      * If <b>false</b>, Strict the file <b>READ and WRITE</b> permission.
-     * @param lineDelim The Default line delimiter is '\n' or else using
+     * @param lineDelim   The Default line delimiter is '\n' or else using
      *                    System Property to get the line.separator.
      * @throws java.io.IOException throws IOException
+     * @throws java.io.UnsupportedEncodingException
+     * @throws com.report.csv.gen.CSVException
      */
-    public CSVGenerator(String csvFileName, String filePath, boolean permit, char... lineDelim) throws IOException
+    public CSVGenerator(String csvFileName, String filePath, boolean permit, char... lineDelim) throws IOException, UnsupportedEncodingException, CSVException
     {
         this(csvFileName, filePath, permit);
         this.lineDelim = lineDelim;
+    }
+
+    /**
+     * To handle the File Functions.
+     * <p> - File Encoding
+     * <p> - Check File Exist.
+     * <p> - Check Directory path is exist and file extension name.
+     * <p>
+     * @param filePath File Path
+     */
+    private static OutputStreamWriter fileHandler(String filePath, String csvFileName) throws UnsupportedEncodingException, CSVException
+    {
+        try
+        {
+            if (!new File(filePath).exists())
+            {
+                new File(filePath).mkdirs();
+            }
+
+            if (!csvFileName.endsWith(csvExt))
+            {
+                csvFile = new File(filePath + csvFileName + csvExt);
+            }
+            else
+            {
+                csvFile = new File(filePath + csvFileName);
+            }
+
+            fout = new FileOutputStream(csvFile);
+        }
+        catch (FileNotFoundException ex)
+        {
+            throw new CSVException("File Exception "+ex.getMessage());
+        }
+
+        return new OutputStreamWriter(fout, encoding);
     }
 
     @Override
@@ -197,6 +237,7 @@ public class CSVGenerator implements CSVTool
         }
     }
 
+    @Override
     public void close() throws IOException
     {
         csvWriter.flush();
@@ -221,19 +262,6 @@ public class CSVGenerator implements CSVTool
         {
             csvFile.setReadable(true);
             csvFile.setWritable(true);
-        }
-    }
-
-    /**
-     * Check the directory path is exist or not.
-     * <p>
-     * @param filePath File Path
-     */
-    private void fileHandler(String filePath)
-    {
-        if (!new File(filePath).exists())
-        {
-            new File(filePath).mkdirs();
         }
     }
 }

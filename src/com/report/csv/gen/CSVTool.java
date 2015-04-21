@@ -12,6 +12,8 @@ public interface CSVTool
      * Extension of CSV File (.csv)
      */
     public static final String csvExt = ".csv";
+    
+    public static final String encoding = System.getProperty("file.encoding");
 
      /**
      * Set the Header values into CSV File.

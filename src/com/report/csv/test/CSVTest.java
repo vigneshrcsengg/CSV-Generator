@@ -3,6 +3,7 @@ package com.report.csv.test;
 import com.report.csv.gen.CSVException;
 import com.report.csv.gen.CSVGenerator;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +15,13 @@ public class CSVTest
 {
 
     /**
-     *
+     * 
      * @param args
      * @throws IOException
+     * @throws java.io.UnsupportedEncodingException
+     * @throws com.report.csv.gen.CSVException
      */
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws IOException, UnsupportedEncodingException, CSVException
     {
         String csvFilePath = "C:\\Users\\Prasanth R\\Desktop\\DirectoryCreated\\cell\\";
         String csvFileName = "REPORT_CSV_GENERATOR";
