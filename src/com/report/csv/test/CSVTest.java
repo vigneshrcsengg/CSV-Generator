@@ -35,7 +35,7 @@ public class CSVTest
             };
             String[] datatypeHeader =
             {
-                "STRING_STRICT", "STRING", "INTEGER", "CHAR", "BYTE", "SHORT", "LONG", "DOUBLE", "FLOAT", "BOOLEAN", "URL", "EMAIL", "DATE"
+                "STRING_STRICT", "STRING", "INTEGER", "CHAR", "BYTE", "SHORT", "LONG", "DOUBLE", "FLOAT", "BOOLEAN", "URL", "EMAIL", "DATE","TIME"
             };
 
             String[] _1 =
@@ -129,6 +129,11 @@ public class CSVTest
             {
                 "16/09/2014", "15/04/1991", "20/4/1989", "13/09/1989", "22/12/2045", "28/02/2014"
             };
+            
+            String[] TIME = 
+            {
+                "01:23:12","23:09:23","02:34:22","12:33:21","00:09:12","13:55:09"
+            };
 
             switch (usingFlow)
             {
@@ -173,6 +178,7 @@ public class CSVTest
                         csv.set(10, URL[i]);
                         csv.set(11, EMAIL[i]);
                         csv.set(12, DATE[i]);
+                        csv.set(13, TIME[i]);
                         
                         csv.next();
                     }
@@ -186,7 +192,7 @@ public class CSVTest
         }
         finally
         {
-            csv.flush();
+            csv.close();
         }
     }
 }

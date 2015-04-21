@@ -55,6 +55,11 @@ public interface CSVParserUtil
      * Null or Esc value.
      */
     public static final String NULL = "\0";
+    
+    /**
+     * EMPTY VALUE
+     */
+    public static final String EMPTY = "";
 
     /**
      * Regular Expression present the EMAIL_PATTERN to validate the String is Email or not
@@ -79,6 +84,15 @@ public interface CSVParserUtil
             
             add(new SimpleDateFormat("dd-MM-yyyy"));
             add(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss a"));            
+        }
+    };
+    
+    public static List<SimpleDateFormat> TIME_FORMATS = new ArrayList<SimpleDateFormat>()
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new SimpleDateFormat("HH:mm:ss"));
+            add(new SimpleDateFormat("HH:mm:ss a"));
         }
     };
 

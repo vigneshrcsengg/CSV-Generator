@@ -16,18 +16,29 @@ public class StringValidator implements CSVParserUtil
     private static Pattern pattern;
     private static Matcher matcher;
 
-    /** Cell Value */
+    /**
+     * Cell Value
+     */
     private static String stringData;
 
-    /** CSVParser*/
+    /**
+     * CSVParser
+     */
     public static CSVParser _parser;
 
-    /** Date Object*/
+    /**
+     * Date Object
+     */
     public static Date DATE = null;
 
     /**
+     * Time
+     */
+    public static Date TIME = null;
+
+    /**
      * Constructor.Validate the String is null or not.
-     *
+     * <p>
      * @param STRING_VAL
      */
     public StringValidator(String STRING_VAL)
@@ -40,8 +51,9 @@ public class StringValidator implements CSVParserUtil
     }
 
     /**
-     * Pass the String into CSVWriter after String Validation with <b>Email,URL and Date</b>
-     *
+     * Pass the String into CSVWriter after String Validation with <b>Email,URL
+     * and Date</b>
+     * <p>
      * @return cellData
      */
     public static String writeString()
@@ -55,6 +67,10 @@ public class StringValidator implements CSVParserUtil
                 {
                     stringData = _parser.parseDate(DATE);
                 }
+                else if (isTime())
+                {
+                    stringData = _parser.parseTime(TIME);
+                }
                 else
                 {
                     stringData = _parser.sanitizeCSV();
@@ -66,20 +82,20 @@ public class StringValidator implements CSVParserUtil
 
     /**
      * Validate the String is Email type using EMAIL_PATTERN
-     *
+     * <p>
      * @return true - Email, false - Normal String
      */
     public static boolean isEmail()
     {
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(stringData);
-        
+
         return matcher.matches();
     }
 
     /**
      * Validate the String is URL Type using URL_PATTERN
-     *
+     * <p>
      * @return true - URL, false - Normal String
      */
     public static boolean isURL()
@@ -91,8 +107,9 @@ public class StringValidator implements CSVParserUtil
     }
 
     /**
-     * Validate the String is Date using DATE_FORMATS.If String is date set the value into DATE Object.
-     *
+     * Validate the String is Date using DATE_FORMATS.If String is date set the
+     * value into DATE Object.
+     * <p>
      * @return <b>true</b> - Date, <b>false</b> - Normal String
      */
     public static boolean isDate()
@@ -109,6 +126,27 @@ public class StringValidator implements CSVParserUtil
                 return false;
             }
             if (DATE != null)
+            {
+                break;
+            }
+        }
+        return true;
+    }
+
+    private static boolean isTime()
+    {
+        for (DateFormat tFormats : TIME_FORMATS)
+        {
+            try
+            {
+                tFormats.setLenient(false);
+                TIME = tFormats.parse(stringData);
+            }
+            catch (ParseException e)
+            {
+                return false;
+            }
+            if (TIME != null)
             {
                 break;
             }

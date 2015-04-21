@@ -67,6 +67,7 @@ public class CSVRow implements CSVParserUtil
      * 
      * @param csvWriter
      *      FileWriter Stream.
+     * @throws com.report.csv.gen.CSVException
      */
     public void toWriter(Writer csvWriter) throws CSVException
     {
@@ -81,11 +82,11 @@ public class CSVRow implements CSVParserUtil
 
                 if (isSet[i])
                 {
-                    if (_data[i] == null)
+                    if(_data[i] == null)
                     {
-                        _data[i] = "";
+                        _data[i] = "";                        
                     }
-
+                    
                     _writer = new CSVWriter(_data[i]);
                     _writer.write(csvWriter);
                 }

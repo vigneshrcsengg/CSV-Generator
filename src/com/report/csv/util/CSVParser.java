@@ -88,4 +88,9 @@ public class CSVParser implements CSVParserUtil
         //return "  "+String.format(DAY, DATE)+"-"+String.format(ABV_MONTH, DATE)+"-"+String.format(YEAR, DATE);
         return String.format(DAY, DATE) + "-" + String.format(ABV_MONTH, DATE) + "-" + String.format(YEAR, DATE);
     }
+
+    public static String parseTime(Date TIME)
+    {
+        return String.format(_12HOUR, TIME);
+    }
 }
