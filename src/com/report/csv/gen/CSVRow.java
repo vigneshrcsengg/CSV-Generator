@@ -12,7 +12,6 @@ import java.io.Writer;
  */
 public class CSVRow implements CSVParserUtil
 {
-
     /** Performs a Writer operation using FileWriter Stream  */
     private CSVWriter _writer;
     /** To store the Row Values*/
@@ -20,6 +19,7 @@ public class CSVRow implements CSVParserUtil
     /** State of row values is parallel to corresponding header content or not*/
     private boolean[] isSet;
 
+    // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor - Get the Object values using header column count and set the state of value is present or not.
      * 
@@ -40,7 +40,8 @@ public class CSVRow implements CSVParserUtil
             isSet = new boolean[header.getColumnCount()];
         }
     }
-
+    // </editor-fold>
+        
     /**
      * Set the index position and Object Value.Set the state of data present.
      * 
@@ -62,6 +63,7 @@ public class CSVRow implements CSVParserUtil
         isSet[index] = true;
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Row Writer Algorthim">
     /**
      * Write the row values into CSV File pass to the Writer Class CSVWriter.
      * 
@@ -101,4 +103,5 @@ public class CSVRow implements CSVParserUtil
             throw new CSVException("NullPointerException during CSVRow Writer - "+e.getMessage());
         }
     }
+    //</editor-fold>
 }

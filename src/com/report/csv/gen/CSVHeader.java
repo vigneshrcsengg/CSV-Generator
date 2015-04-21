@@ -19,7 +19,8 @@ public class CSVHeader implements CSVParserUtil
     private List<String> columns;
     /** Store the Header values with key pair*/
     private HashMap<String, Integer> columnIndexes;
-
+    
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Default Constructor Initialize the LinkedList and HashMap using String Object.
      */
@@ -45,7 +46,8 @@ public class CSVHeader implements CSVParserUtil
             this.columns.add(columns[i]);
             columnIndexes.put(columns[i], i);
         }
-    }
+    }    
+    //</editor-fold>
 
     /**
      * Get the Column Index position using Header Content.
@@ -77,6 +79,7 @@ public class CSVHeader implements CSVParserUtil
         return columns.size();
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Header Writer Algorthim">
     /**
      * Perform a Write Stream Operation using FileWriter.
      * 
@@ -117,4 +120,5 @@ public class CSVHeader implements CSVParserUtil
             }
         }
     }
+    // </editor-fold>
 }

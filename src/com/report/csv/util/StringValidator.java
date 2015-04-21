@@ -36,6 +36,7 @@ public class StringValidator implements CSVParserUtil
      */
     public static Date TIME = null;
 
+    // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor.Validate the String is null or not.
      * <p>
@@ -49,6 +50,7 @@ public class StringValidator implements CSVParserUtil
         }
         this.stringData = STRING_VAL;
     }
+    // </editor-fold>
 
     /**
      * Pass the String into CSVWriter after String Validation with <b>Email,URL
@@ -80,6 +82,7 @@ public class StringValidator implements CSVParserUtil
         return stringData;
     }
 
+    // <editor-fold defaultstate="collapsed" desc="String Validation Methods">
     /**
      * Validate the String is Email type using EMAIL_PATTERN
      * <p>
@@ -153,5 +156,6 @@ public class StringValidator implements CSVParserUtil
         }
         return true;
     }
-
+    
+    //</editor-fold>
 }

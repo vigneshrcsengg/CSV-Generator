@@ -15,6 +15,7 @@ public interface CSVTool
     
     public static final String encoding = System.getProperty("file.encoding");
 
+    // <editor-fold defaultstate="collapsed" desc="CSVTool Implement Methods">
      /**
      * Set the Header values into CSV File.
      * <p>
@@ -74,4 +75,6 @@ public interface CSVTool
      * @throws IOException throws IOException
      */
     public abstract void close() throws IOException;
+    
+    //</editor-fold>
 }

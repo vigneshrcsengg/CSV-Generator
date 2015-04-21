@@ -14,6 +14,7 @@ public class CSVParser implements CSVParserUtil
     /** Contains cellData*/
     private static String cellData;
 
+    // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor
      * 
@@ -26,7 +27,9 @@ public class CSVParser implements CSVParserUtil
         this.cellData = cellData;
         resultBuilder = new StringBuilder(cellData);
     }
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="String Parse Algorthim">
     /**
      * To parse the String with Special Characters.
      *
@@ -72,7 +75,9 @@ public class CSVParser implements CSVParserUtil
 
         return resultBuilder;
     }
-
+    //</editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="DateTime Parse Algorthim">
     /**
      * Parse the Date into particular Formats.
      *
@@ -89,8 +94,18 @@ public class CSVParser implements CSVParserUtil
         return String.format(DAY, DATE) + "-" + String.format(ABV_MONTH, DATE) + "-" + String.format(YEAR, DATE);
     }
 
+    /**
+     * Parse the Date into particular Formats.
+     *
+     * @param TIME
+     *      Convert the time format into 12 Hours time Stamp
+     * @return
+     *      Parsed Time Stamp Format.
+     */
     public static String parseTime(Date TIME)
     {
         return String.format(_12HOUR, TIME);
     }
+    
+    //</editor-fold>
 }

@@ -22,6 +22,7 @@ public class CSVWriter implements CSVWriterTool
     /** StringValidator class to find and parse the String from <b>String,Date,URL and Email</b> */
     private static StringValidator theString;
 
+    // <editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Constructor to get Object type.
      * 
@@ -35,7 +36,9 @@ public class CSVWriter implements CSVWriterTool
 
         this._objValue = String.valueOf(objValue).trim();
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="CSV File Writer">
     @Override
     public void write(Writer csvWriter) throws IOException
     {
@@ -79,4 +82,5 @@ public class CSVWriter implements CSVWriterTool
                 break;
         }
     }
+    //</editor-fold>
 }

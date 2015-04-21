@@ -61,7 +61,8 @@ public class CSVGenerator implements CSVTool
      * Provide a status of Header
      */
     private boolean closed;
-
+    
+    // <editor-fold defaultstate="collapsed" desc="Constructors">    
     /**
      * Constructor with Default Parameters.
      * <p>
@@ -124,14 +125,16 @@ public class CSVGenerator implements CSVTool
         this(csvFileName, filePath, permit);
         this.lineDelim = lineDelim;
     }
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="File Handlers Algorthims">
     /**
      * To handle the File Functions.
      * <p> - File Encoding
      * <p> - Check File Exist.
      * <p> - Check Directory path is exist and file extension name.
      * <p>
-     * @param filePath File Path
+     * @param filePath File Path    
      */
     private static OutputStreamWriter fileHandler(String filePath, String csvFileName) throws UnsupportedEncodingException, CSVException
     {
@@ -160,7 +163,30 @@ public class CSVGenerator implements CSVTool
 
         return new OutputStreamWriter(fout, encoding);
     }
+    
+    /**
+     * Set the File Permission.
+     * <p>
+     * @param permits To set the File permissions.<p>
+     * If <b>true</b>, Strict the file <b>READONLY</b> file permission. So,
+     * cannot overwrite or edit the file informations and contents.<p>
+     * If <b>false</b>, Strict the file <b>READ and WRITE</b> permission.
+     */
+    private static void setPermit(boolean permits)
+    {
+        if (permits == true)
+        {
+            csvFile.setReadOnly();
+        }
+        else if (permits == false)
+        {
+            csvFile.setReadable(true);
+            csvFile.setWritable(true);
+        }
+    }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Interface CSVTool Inherited Methods">
     @Override
     public void setHeader(String... columns) throws CSVException
     {
@@ -243,25 +269,6 @@ public class CSVGenerator implements CSVTool
         csvWriter.flush();
         csvWriter.close();
     }
-
-    /**
-     * Set the File Permission.
-     * <p>
-     * @param permits To set the File permissions.<p>
-     * If <b>true</b>, Strict the file <b>READONLY</b> file permission. So,
-     * cannot overwrite or edit the file informations and contents.<p>
-     * If <b>false</b>, Strict the file <b>READ and WRITE</b> permission.
-     */
-    private void setPermit(boolean permits)
-    {
-        if (permits == true)
-        {
-            csvFile.setReadOnly();
-        }
-        else if (permits == false)
-        {
-            csvFile.setReadable(true);
-            csvFile.setWritable(true);
-        }
-    }
+    
+    // </editor-fold>
 }
